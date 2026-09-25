@@ -47,7 +47,7 @@
 </nav>
 
 <h1>Impressum und Datenschutz – IronTally</h1>
-<p class="meta">Stand: 22.09.2026 · App: IronTally (<code>com.benebuilder.gym</code>)</p>
+<p class="meta">Stand: 25.09.2026 · App: IronTally (<code>com.benebuilder.gym</code>)</p>
 
 <section lang="de">
 
@@ -80,12 +80,19 @@ Weitergabe an Dritte zu Werbezwecken</strong> statt; es gibt keine Werbung im Ap
   <tr><td>Angabe zur Herkunft (einmalige, freiwillige Auswahl aus sieben festen Antworten auf die Frage, worüber du von IronTally erfahren hast; kein Freitext)</td><td>Auswertung, über welchen Kanal Nutzer auf IronTally stoßen</td><td>lit. a (Einwilligung)</td></tr>
   <tr><td>Installationsquelle (Play-Install-Referrer; enthält ausschließlich Kampagnen-Kennzeichen, die wir selbst an unsere eigenen Links hängen, keine Geräte- oder Werbekennung)</td><td>derselbe Zweck, gemessen statt erinnert</td><td>lit. f (berechtigtes Interesse)</td></tr>
   <tr><td>Kauf-/Abo-Status</td><td>Verwaltung von Lifetime/Abo</td><td>lit. b (Vertrag)</td></tr>
+  <tr><td>Name einer eigenen Übung – nur bei eingeschaltetem KI-Assistenten (Beta) und nur, wenn du einen Vorschlag anforderst</td><td>Vorschlag für Hauptmuskel, Gerät und Übungstyp (siehe Abschnitt 5)</td><td>lit. a (Einwilligung)</td></tr>
+  <tr><td>Nachweis deiner Einwilligung zum KI-Assistenten (Zeitpunkt, Textversion, Bestätigung des Mindestalters, ggf. Zeitpunkt des Widerrufs)</td><td>Nachweis der Einwilligung</td><td>lit. c (rechtliche Verpflichtung, Art. 7 Abs. 1 DSGVO)</td></tr>
+  <tr><td>Tageszähler der KI-Anfragen (Datum und Anzahl, ohne Inhalt)</td><td>Begrenzung der Anfragen pro Tag, Schutz vor Missbrauch</td><td>lit. f (berechtigtes Interesse)</td></tr>
 </table>
 
 <h2>4. Auftragsverarbeiter / eingesetzte Dienste</h2>
 <p><strong>Derzeit im Einsatz:</strong></p>
 <ul>
-  <li><strong>Supabase</strong> (Datenbank, Auth, Storage) – EU-Hosting</li>
+  <li><strong>Supabase</strong> (Datenbank, Auth, Storage, Server-Funktionen) – EU-Hosting</li>
+  <li><strong>OpenRouter, Inc.</strong>, 169 Madison Avenue, New York, NY 10016, USA – vermittelt Anfragen
+    an das KI-Modell. Nur für den KI-Assistenten (Beta) und nur mit deiner Einwilligung (Abschnitt 5).</li>
+  <li><strong>TypeSafe AI, Inc.</strong>, San Francisco, USA – betreibt das KI-Modell „Jev“; von OpenRouter
+    als Modellanbieter eingesetzt. Nur für den KI-Assistenten (Beta) und nur mit deiner Einwilligung (Abschnitt 5).</li>
 </ul>
 <p><strong>Geplant, derzeit nicht im Einsatz.</strong> Die folgenden Dienste sind vorgesehen, aber in
 der App noch nicht eingebunden. Über sie findet heute keine Datenverarbeitung statt. Diese Erklärung
@@ -95,10 +102,70 @@ wird aktualisiert, bevor einer von ihnen aktiviert wird:</p>
   <li><strong>PostHog</strong> (Produkt-Analytics, EU-Hosting) – nur bei Einwilligung <em>(geplant)</em></li>
   <li><strong>Google Play Billing</strong> – Zahlungsabwicklung im Play Store <em>(geplant)</em></li>
 </ul>
-<p>Mit den eingesetzten Anbietern bestehen Auftragsverarbeitungsverträge. Eine Übermittlung von Daten
-an Dritte zu deren eigenen Zwecken erfolgt nicht.</p>
+<p>Mit Supabase und OpenRouter bestehen Auftragsverarbeitungsverträge. TypeSafe ist über OpenRouter
+eingebunden (Einzelheiten in Abschnitt 5). Wir übermitteln keine Daten an Dritte zu deren eigenen Zwecken.</p>
 
-<h2>5. Speicherdauer &amp; Löschung</h2>
+<h2 id="ki-assistent">5. KI-Assistent (Beta)</h2>
+
+<h3>Was der KI-Assistent macht</h3>
+<p>Wenn du eine eigene Übung anlegst, kann eine KI Hauptmuskel, Gerät und Übungstyp vorschlagen. Die
+Funktion ist eine Beta und derzeit nur für eingeladene Beta-Tester sichtbar. Sie bleibt aus, bis du sie in
+den Einstellungen einschaltest und ausdrücklich einwilligst. Eine Anfrage wird nur gesendet, wenn du auf
+„Vorschlag holen“ tippst, nicht schon während du den Namen eingibst.</p>
+
+<h3>Welche Daten gesendet werden</h3>
+<p>An die KI geht ausschließlich der Name der Übung, den du eingibst. Deine E-Mail-Adresse, deine
+Nutzerkennung, deine Trainingsdaten, Notizen, Angaben zu Befinden oder Muskelkater, dein Körpergewicht und
+Fotos werden nicht gesendet. Die Anfrage stellt unser Server (eine Supabase Edge Function), nicht die App
+auf deinem Gerät; der Zugangsschlüssel zur KI liegt nur dort. Vor jeder Anfrage prüft der Server anhand
+deiner Anmeldung, ob du freigeschaltet bist und eingewilligt hast, und zählt die Anfragen des Tages. Diese
+Angaben bleiben bei uns.</p>
+<p>Bitte schreib keine Gesundheitsangaben in den Übungsnamen. App und Server erkennen typische Begriffe
+(zum Beispiel „Schmerz“, „Reha“ oder „Verletzung“) und fragen die KI in diesem Fall nicht. Das ist eine
+Hilfe, keine Garantie: Nicht jede Formulierung wird erkannt.</p>
+
+<h3>Empfänger</h3>
+<p>Unser Server sendet den Übungsnamen an OpenRouter, Inc. (USA). OpenRouter leitet die Anfrage an
+TypeSafe AI, Inc. (USA) weiter; dort beantwortet das KI-Modell „Jev“ sie. OpenRouter ist unser
+Auftragsverarbeiter und setzt TypeSafe als Modellanbieter ein.</p>
+
+<h3>Rechtsgrundlage und Widerruf</h3>
+<p>Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Du kannst sie jederzeit widerrufen,
+indem du den Schalter in den Einstellungen ausschaltest. Der Widerruf wirkt für die Zukunft: Danach sendet
+die App keine Übungsnamen mehr, und unser Server lehnt Anfragen ab. Einwilligen kannst du ab 16 Jahren;
+das bestätigst du beim Einschalten.</p>
+
+<h3>Übermittlung in die USA</h3>
+<p>OpenRouter und TypeSafe haben ihren Sitz in den USA. Beide stehen nicht auf der Liste des EU-US Data
+Privacy Framework (geprüft am 25.09.2026). Die Übermittlung stützt sich deshalb auf die
+Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c DSGVO). Sie sind im
+Auftragsverarbeitungsvertrag von OpenRouter vereinbart (Data Processing Agreement, Stand 26.08.2026,
+Modul 2: Verantwortlicher an Auftragsverarbeiter). TypeSafe sieht in seinem eigenen Data Processing
+Addendum (Stand 24.04.2026) ebenfalls Standardvertragsklauseln vor.</p>
+
+<h3>Speicherdauer</h3>
+<p>Bei uns: Übungsnamen werden auf unserem Server nicht gespeichert. Den Nachweis deiner Einwilligung
+bewahren wir auf, solange dein Konto besteht, auch nach einem Widerruf, damit wir Einwilligung und Widerruf
+belegen können. Tageszähler, die älter als 30 Tage sind, löscht der Server bei der nächsten Anfrage.
+Mit deinem Konto werden Einwilligungsnachweis und Tageszähler in jedem Fall gelöscht. Die Vorschläge und das
+KI-Aktivitätsprotokoll bleiben auf deinem Gerät; zwischengespeicherte Vorschläge verfallen dort nach
+30 Tagen.</p>
+<p>Bei OpenRouter: Nach dem Auftragsverarbeitungsvertrag löscht OpenRouter Anfrage und Antwort umgehend,
+nachdem die Antwort erzeugt wurde, sofern der Kunde keine Protokollierung eingeschaltet hat. OpenRouter
+verwendet Eingaben nach eigener Angabe nicht zum Training von KI-Modellen.</p>
+<p>Bei TypeSafe: Laut Datenschutzerklärung von TypeSafe (Stand 19.11.2025) bewahrt TypeSafe
+personenbezogene Daten auf, „as long as reasonably necessary“ (solange es vernünftigerweise erforderlich
+ist), um den Dienst zu erbringen; eine feste Frist nennt TypeSafe nicht. TypeSafe erklärt dort, Eingaben
+nicht zum Training von KI-Modellen zu verwenden. OpenRouter führt den Jev-Zugang von TypeSafe als Zugang
+ohne Speicherung der Eingaben und ohne Training (Stand 25.09.2026).</p>
+
+<h3>Keine automatisierte Entscheidung, Kennzeichnung</h3>
+<p>Der KI-Assistent trifft keine automatisierte Entscheidung im Sinne von Art. 22 DSGVO. Er füllt nur leere
+Felder im Formular vor. Ein Vorschlag wird erst übernommen, wenn du die Übung speicherst, und du kannst jedes
+Feld vorher ändern. Vorgeschlagene Felder sind in der App als „KI-Vorschlag“ gekennzeichnet. Gewichte,
+Wiederholungen, Sätze und Pausen schlägt weiterhin die regelbasierte Engine vor, nicht die KI.</p>
+
+<h2>6. Speicherdauer &amp; Löschung</h2>
 <p>Wir speichern deine Daten, solange dein Konto besteht. Du kannst dein Konto und alle zugehörigen
 Daten jederzeit löschen — in der App (Einstellungen → Konto löschen, mit Passwort-Bestätigung) oder
 per Anfrage an die oben genannte E-Mail. Dabei werden Auth-Konto, alle Trainingsdaten und ggf.
@@ -106,19 +173,19 @@ gespeicherte Set-Videos vollständig entfernt. Nach Löschung werden die Daten i
 entfernt, soweit keine gesetzlichen Aufbewahrungspflichten entgegenstehen. <strong>Diese Seite ist
 zugleich die Anlaufstelle für Lösch-Anfragen.</strong></p>
 
-<h2>6. Deine Rechte</h2>
+<h2>7. Deine Rechte</h2>
 <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
 Datenübertragbarkeit und Widerspruch. Erteilte Einwilligungen kannst du jederzeit mit Wirkung für die
 Zukunft widerrufen. Du hast zudem ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde.</p>
 
-<h2>7. Datensicherheit</h2>
+<h2>8. Datensicherheit</h2>
 <p>Die Übertragung erfolgt verschlüsselt (HTTPS/TLS). Set-Videos/Fotos sind, sofern gesynct, privat und
 nur deinem Konto zugeordnet.</p>
 
-<h2>8. Gesundheitshinweis</h2>
+<h2>9. Gesundheitshinweis</h2>
 <p>IronTally ersetzt keine medizinische oder trainingstherapeutische Beratung.</p>
 
-<h2>9. Änderungen</h2>
+<h2>10. Änderungen</h2>
 <p>Wir können diese Datenschutzerklärung anpassen. Die jeweils aktuelle Version ist unter dieser URL
 abrufbar.</p>
 
@@ -129,7 +196,7 @@ abrufbar.</p>
 <section lang="en">
 
 <h2 class="lang-title">Imprint and Privacy Policy – IronTally (English)</h2>
-<p class="meta">Last updated: 22.09.2026 · App: IronTally (<code>com.benebuilder.gym</code>)</p>
+<p class="meta">Last updated: 25.09.2026 · App: IronTally (<code>com.benebuilder.gym</code>)</p>
 
   <h2 id="imprint">Imprint (Impressum, § 5 DDG)</h2>
     <p>Benedikt Hinger<br>Reißenbachstr. 11<br>72805 Lichtenstein<br>Germany<br>Email: hingerbenedikt@gmail.com</p>
@@ -153,27 +220,90 @@ We do <strong>not share data with third parties for advertising</strong>, and th
   <tr><td>Acquisition source (one-off, voluntary choice from seven fixed answers to the question how you heard about IronTally; no free text)</td><td>Understanding which channel brings people to IronTally</td><td>(a) consent</td></tr>
   <tr><td>Install source (Play install referrer; contains only campaign markers we attach to our own links ourselves, no device or advertising identifier)</td><td>Same purpose, measured rather than recalled</td><td>(f) legitimate interest</td></tr>
   <tr><td>Purchase/subscription status</td><td>Manage lifetime/subscription</td><td>(b) contract</td></tr>
+  <tr><td>Name of a custom exercise – only if the AI assistant (beta) is switched on and only when you request a suggestion</td><td>Suggesting primary muscle, equipment and exercise type (see section 5)</td><td>(a) consent</td></tr>
+  <tr><td>Record of your consent to the AI assistant (time, text version, confirmation of minimum age, time of withdrawal if any)</td><td>Proof of consent</td><td>(c) legal obligation (Art. 7(1) GDPR)</td></tr>
+  <tr><td>Daily counter of AI requests (date and count, no content)</td><td>Limiting requests per day, preventing abuse</td><td>(f) legitimate interest</td></tr>
 </table>
 
 <h2>4. Processors / services used</h2>
-<p><strong>Currently in use:</strong> Supabase (database, auth, storage – EU).</p>
+<p><strong>Currently in use:</strong> Supabase (database, auth, storage, server functions – hosted in the EU).
+Only for the AI assistant (beta) and only with your consent (section 5): OpenRouter, Inc., 169 Madison
+Avenue, New York, NY 10016, USA, which forwards requests to the AI model; and TypeSafe AI, Inc.,
+San Francisco, USA, which runs the AI model “Jev” and is engaged by OpenRouter as a model provider.</p>
 <p><strong>Planned, not currently in use.</strong> The following services are intended but are not yet
 integrated into the app. No data is processed through them today. This policy will be updated before
 any of them is activated: RevenueCat (purchases) <em>(planned)</em>, PostHog (product analytics – EU,
 only with consent) <em>(planned)</em>, Google Play Billing (payments) <em>(planned)</em>.</p>
-<p>Data processing agreements are in place with the services in use. No data is shared with third
-parties for their own purposes.</p>
+<p>Data processing agreements are in place with Supabase and OpenRouter. TypeSafe is engaged through
+OpenRouter (details in section 5). We do not share data with third parties for their own purposes.</p>
 
-<h2>5. Retention &amp; deletion</h2>
+<h2 id="ai-assistant">5. AI assistant (beta)</h2>
+
+<h3>What the AI assistant does</h3>
+<p>When you create a custom exercise, an AI can suggest the primary muscle, equipment and exercise type.
+The feature is a beta and is currently visible only to invited beta testers. It stays off until you switch
+it on in the settings and give your explicit consent. A request is sent only when you tap the button to request a
+suggestion, not while you are typing the name.</p>
+
+<h3>What data is sent</h3>
+<p>Only the exercise name you enter is sent to the AI. Your email address, your user ID, your training
+data, notes, information about how you feel or about muscle soreness, your body weight and photos are not sent.
+The request is made by our server (a Supabase Edge Function), not by the app on your device; the access
+key for the AI is stored only there. Before each request, the server uses your login to check whether you
+have been given access and have consented, and it counts the day's requests. This information stays
+with us.</p>
+<p>Please do not put health information into the exercise name. The app and the server recognise common
+terms (such as “pain”, “rehab” or “injury”) and do not query the AI in that case. This is a safeguard, not
+a guarantee: not every wording is recognised.</p>
+
+<h3>Recipients</h3>
+<p>Our server sends the exercise name to OpenRouter, Inc. (USA). OpenRouter forwards the request to
+TypeSafe AI, Inc. (USA), where the AI model “Jev” answers it. OpenRouter is our processor and engages
+TypeSafe as a model provider.</p>
+
+<h3>Legal basis and withdrawal</h3>
+<p>The legal basis is your consent (Art. 6(1)(a) GDPR). You can withdraw it at any time by switching the
+feature off in the settings. Withdrawal applies going forward: the app then no longer sends exercise
+names, and our server rejects requests. You must be at least 16 to consent; you confirm this when you switch
+the feature on.</p>
+
+<h3>Transfer to the USA</h3>
+<p>OpenRouter and TypeSafe are based in the USA. Neither is on the EU-US Data Privacy Framework list
+(checked on 25.09.2026). The transfer is therefore based on the European Commission's standard contractual
+clauses (Art. 46(2)(c) GDPR). They are part of OpenRouter's data processing agreement (Data Processing
+Agreement, last updated 26.08.2026, Module 2: controller to processor). TypeSafe's own Data Processing
+Addendum (last updated 24.04.2026) also provides for standard contractual clauses.</p>
+
+<h3>Retention</h3>
+<p>On our side: exercise names are not stored on our server. We keep the record of your consent for as long as
+your account exists, including after a withdrawal, so that we can prove both consent and withdrawal. The
+server deletes daily counters older than 30 days with the next request. Deleting your account always
+deletes the consent record and the daily counters. Suggestions and the AI activity log stay on your
+device; cached suggestions expire there after 30 days.</p>
+<p>At OpenRouter: under its data processing agreement, OpenRouter deletes the request and the response
+promptly after the response has been generated, unless the customer has switched on logging. According to
+OpenRouter, it does not use inputs to train AI models.</p>
+<p>At TypeSafe: according to TypeSafe's privacy policy (last updated 19.11.2025), TypeSafe retains
+personal data for “as long as reasonably necessary” to provide its services; TypeSafe does not state a fixed
+period. The policy also states that TypeSafe does not use inputs to train AI models. OpenRouter lists
+TypeSafe's Jev endpoint as one that does not retain inputs and does not train on them (as of 25.09.2026).</p>
+
+<h3>No automated decision-making, labelling</h3>
+<p>The AI assistant does not make automated decisions within the meaning of Art. 22 GDPR. It only
+pre-fills empty fields in the form. A suggestion is only applied when you save the exercise, and you can
+change any field before that. Suggested fields are marked as AI suggestions in the app. Weights, reps, sets
+and rest times are still suggested by the rule-based engine, not by the AI.</p>
+
+<h2>6. Retention &amp; deletion</h2>
 <p>We store your data while your account exists. You can delete your account and all related data at any
 time — in the app (Settings → Delete account) or by emailing the address above. Data is removed within
 30 days unless legal retention obligations apply.</p>
 
-<h2>6. Your rights</h2>
+<h2>7. Your rights</h2>
 <p>You have the right to access, rectification, erasure, restriction, data portability and objection, and
 the right to withdraw consent and to lodge a complaint with a supervisory authority.</p>
 
-<h2>7. Security &amp; health note</h2>
+<h2>8. Security &amp; health note</h2>
 <p>Transmission is encrypted (HTTPS/TLS). IronTally is not medical or therapeutic advice.</p>
 
 </section>
@@ -201,7 +331,7 @@ the right to withdraw consent and to lodge a complaint with a supervisory author
       "name": "IronTally – Impressum und Datenschutz",
       "description": "Impressum und Datenschutzerklärung zur Android-App IronTally, deutsch und englisch.",
       "inLanguage": ["de-DE", "en"],
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-25",
       "publisher": { "@id": "https://hingerbenedikt-lab.github.io/irontally/#organization" },
       "author": { "@type": "Person", "name": "Benedikt Hinger" }
     }
@@ -211,4 +341,3 @@ the right to withdraw consent and to lodge a complaint with a supervisory author
 
 </body>
 </html>
-                                                               
