@@ -119,11 +119,24 @@ verwenden. Davon abgesehen übermitteln wir keine Daten an Dritte zu deren eigen
 Funktion ist eine Beta und derzeit nur für eingeladene Beta-Tester sichtbar. Sie bleibt aus, bis du sie in
 den Einstellungen einschaltest und ausdrücklich einwilligst. Eine Anfrage wird nur gesendet, wenn du auf
 „Vorschlag holen“ tippst, nicht schon während du den Namen eingibst.</p>
+<p>Zusätzlich gibt es „Vorschläge im Training“: Nach dem letzten geplanten Satz einer Übung kann die KI
+einschätzen, ob ein weiterer Satz lohnt, ob es für heute reicht oder ob du lieber aufhören solltest. Diese
+Funktion hat einen eigenen Schalter, ist standardmäßig aus und setzt dieselbe Einwilligung voraus. Das Ergebnis
+ist nur ein Hinweis in der App; sie fügt nie selbst einen Satz hinzu und ändert keine Gewichte oder
+Wiederholungen. Pro Übung und Training wird höchstens einmal gefragt.</p>
 
 <h3>Welche Daten gesendet werden</h3>
-<p>An die KI geht ausschließlich der Name der Übung, den du eingibst. Deine E-Mail-Adresse, deine
-Nutzerkennung, deine Trainingsdaten, Notizen, Angaben zu Befinden oder Muskelkater, dein Körpergewicht und
-Fotos werden nicht gesendet. Die Anfrage stellt unser Server (eine Supabase Edge Function), nicht die App
+<p>Beim Anlegen einer Übung geht an die KI ausschließlich der Name der Übung, den du eingibst.</p>
+<p>Bei „Vorschlägen im Training“ gehen ausschließlich Zahlen an die KI, die die App vorher berechnet:
+Gewicht, Wiederholungen und Reserve (RIR) der heutigen Sätze dieser einen Übung (höchstens zehn), die
+geplante Zahl der Sätze, der Ziel-Wiederholungsbereich und die Ziel-Reserve, der Trainingsmodus der Übung,
+der Rückgang der Wiederholungen vom ersten zum letzten Satz, der Vergleich zur letzten Einheit dieser Übung
+(Zahl der Sätze, bester Satz, Tage seitdem) und eine dreistufige Einschätzung, ob der trainierte Muskel vor
+dem Training erholt war. Diese Einschätzung berechnet die App nur aus der Zeit seit der letzten Belastung und
+der Satzzahl der letzten sieben Tage, ohne Angaben zu Muskelkater. Der Name der Übung wird dabei nicht
+gesendet. Zweck ist allein der Hinweis, ob ein weiterer Satz sinnvoll ist.</p>
+<p>In keinem Fall gesendet werden deine E-Mail-Adresse, deine Nutzerkennung, Datum oder Uhrzeit, dein
+übriger Trainingsverlauf, Notizen, Angaben zu Befinden oder Muskelkater, dein Körpergewicht und Fotos. Die Anfrage stellt unser Server (eine Supabase Edge Function), nicht die App
 auf deinem Gerät; der Zugangsschlüssel zur KI liegt nur dort. Vor jeder Anfrage prüft der Server anhand
 deiner Anmeldung, ob du freigeschaltet bist und eingewilligt hast, und zählt die Anfragen des Tages. Diese
 Angaben bleiben bei uns.</p>
@@ -132,14 +145,15 @@ Angaben bleiben bei uns.</p>
 Hilfe, keine Garantie: Nicht jede Formulierung wird erkannt.</p>
 
 <h3>Empfänger</h3>
-<p>Unser Server sendet den Übungsnamen an OpenRouter, Inc. (USA). OpenRouter leitet die Anfrage an
+<p>Unser Server sendet den Übungsnamen bzw. die Trainingszahlen an OpenRouter, Inc. (USA). OpenRouter leitet die Anfrage an
 TypeSafe AI, Inc. (USA) weiter; dort beantwortet das KI-Modell „Jev“ sie. OpenRouter ist unser
 Auftragsverarbeiter und setzt TypeSafe als Modellanbieter ein.</p>
 
 <h3>Rechtsgrundlage und Widerruf</h3>
 <p>Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Du kannst sie jederzeit widerrufen,
 indem du den Schalter in den Einstellungen ausschaltest. Der Widerruf wirkt für die Zukunft: Danach sendet
-die App keine Übungsnamen mehr, und unser Server lehnt Anfragen ab. Einwilligen kannst du ab 16 Jahren;
+die App weder Übungsnamen noch Trainingszahlen, und unser Server lehnt Anfragen ab. „Vorschläge im Training“
+kannst du auch einzeln ausschalten. Einwilligen kannst du ab 16 Jahren;
 das bestätigst du beim Einschalten.</p>
 
 <h3>Übermittlung in die USA</h3>
@@ -151,7 +165,7 @@ Modul 2: Verantwortlicher an Auftragsverarbeiter). TypeSafe sieht in seinem eige
 Addendum (Stand 24.04.2026) ebenfalls Standardvertragsklauseln vor.</p>
 
 <h3>Speicherdauer</h3>
-<p>Bei uns: Übungsnamen werden auf unserem Server nicht gespeichert. Den Nachweis deiner Einwilligung
+<p>Bei uns: Übungsnamen und Trainingszahlen werden auf unserem Server nicht gespeichert. Den Nachweis deiner Einwilligung
 bewahren wir auf, solange dein Konto besteht, auch nach einem Widerruf, damit wir Einwilligung und Widerruf
 belegen können. Tageszähler, die älter als 30 Tage sind, löscht der Server bei der nächsten Anfrage.
 Mit deinem Konto werden Einwilligungsnachweis und Tageszähler in jedem Fall gelöscht. Die Vorschläge und das
@@ -179,7 +193,9 @@ Abschnitt 4.</p>
 <p>Der KI-Assistent trifft keine automatisierte Entscheidung im Sinne von Art. 22 DSGVO. Er füllt nur leere
 Felder im Formular vor. Ein Vorschlag wird erst übernommen, wenn du die Übung speicherst, und du kannst jedes
 Feld vorher ändern. Vorgeschlagene Felder sind in der App als „KI-Vorschlag“ gekennzeichnet. Gewichte,
-Wiederholungen, Sätze und Pausen schlägt weiterhin die regelbasierte Engine vor, nicht die KI.</p>
+Wiederholungen, Sätze und Pausen schlägt weiterhin die regelbasierte Engine vor, nicht die KI. Der Hinweis bei
+„Vorschlägen im Training“ ist als „KI-Vorschlag“ gekennzeichnet und ändert nichts von selbst; ob du einen
+weiteren Satz machst, entscheidest du.</p>
 
 <h2>6. Speicherdauer &amp; Löschung</h2>
 <p>Wir speichern deine Daten, solange dein Konto besteht. Du kannst dein Konto und alle zugehörigen
@@ -267,10 +283,24 @@ their own purposes.</p>
 The feature is a beta and is currently visible only to invited beta testers. It stays off until you switch
 it on in the settings and give your explicit consent. A request is sent only when you tap “Get suggestion”, not while
 you are typing the name.</p>
+<p>There are also “Suggestions during workouts”: after the last planned set of an exercise, the AI can
+assess whether one more set is worthwhile, whether that is enough for today or whether you should stop.
+This feature has its own switch, is off by default and requires the same consent. The result is only a hint in
+the app; the feature never adds a set by itself and does not change weights or reps. The AI is queried at
+most once per exercise and workout.</p>
 
 <h3>What data is sent</h3>
-<p>Only the exercise name you enter is sent to the AI. Your email address, your user ID, your training
-data, notes, information about how you feel or about muscle soreness, your body weight and photos are not sent.
+<p>When you create an exercise, only the exercise name you enter is sent to the AI.</p>
+<p>For “Suggestions during workouts”, only numbers calculated by the app are sent to the AI: weight, reps
+and reps in reserve (RIR) of today's sets of that one exercise (at most ten), the planned number of sets,
+the target rep range and target reps in reserve, the exercise's training mode, the drop in reps from the
+first to the last set, the comparison with the last session of that exercise (number of sets, best set,
+days since) and a three-level estimate of whether the trained muscle was recovered before the workout. The
+app calculates this estimate only from the time since the muscle was last trained and the number of sets
+in the last seven days, without any muscle soreness data. The exercise name is not sent in this case. The
+sole purpose is to indicate whether another set makes sense.</p>
+<p>In no case are your email address, your user ID, date or time, the rest of your training history,
+notes, information about how you feel or about muscle soreness, your body weight or photos sent.
 The request is made by our server (a Supabase Edge Function), not by the app on your device; the access
 key for the AI is stored only there. Before each request, the server uses your login to check whether you
 have been given access and have consented, and it counts the day's requests. This information stays
@@ -280,14 +310,15 @@ terms (such as “pain”, “rehab” or “injury”) and do not query the AI 
 a guarantee: not every wording is recognised.</p>
 
 <h3>Recipients</h3>
-<p>Our server sends the exercise name to OpenRouter, Inc. (USA). OpenRouter forwards the request to
+<p>Our server sends the exercise name or the training numbers to OpenRouter, Inc. (USA). OpenRouter forwards the request to
 TypeSafe AI, Inc. (USA), where the AI model “Jev” answers it. OpenRouter is our processor and engages
 TypeSafe as a model provider.</p>
 
 <h3>Legal basis and withdrawal</h3>
 <p>The legal basis is your consent (Art. 6(1)(a) GDPR). You can withdraw it at any time by switching the
-feature off in the settings. Withdrawal applies going forward: the app then no longer sends exercise
-names, and our server rejects requests. You must be at least 16 to consent; you confirm this when you switch
+feature off in the settings. Withdrawal applies going forward: the app then sends neither exercise
+names nor training numbers, and our server rejects requests. You can also switch off “Suggestions during
+workouts” on its own. You must be at least 16 to consent; you confirm this when you switch
 the feature on.</p>
 
 <h3>Transfer to the USA</h3>
@@ -298,7 +329,7 @@ Agreement, last updated 26.08.2026, Module 2: controller to processor). TypeSafe
 Addendum (last updated 24.04.2026) also provides for standard contractual clauses.</p>
 
 <h3>Retention</h3>
-<p>On our side: exercise names are not stored on our server. We keep the record of your consent for as long as
+<p>On our side: exercise names and training numbers are not stored on our server. We keep the record of your consent for as long as
 your account exists, including after a withdrawal, so that we can prove both consent and withdrawal. The
 server deletes daily counters older than 30 days with the next request. Deleting your account always
 deletes the consent record and the daily counters. Suggestions and the AI activity log stay on your
@@ -322,7 +353,9 @@ may derive from the data, see section 4.</p>
 <p>The AI assistant does not make automated decisions within the meaning of Art. 22 GDPR. It only
 pre-fills empty fields in the form. A suggestion is only applied when you save the exercise, and you can
 change any field before that. Suggested fields are marked as “AI suggestion” in the app. Weights, reps, sets
-and rest times are still suggested by the rule-based engine, not by the AI.</p>
+and rest times are still suggested by the rule-based engine, not by the AI. The hint for “Suggestions during
+workouts” is marked as “AI suggestion” and changes nothing by itself; you decide whether to do another
+set.</p>
 
 <h2>6. Retention &amp; deletion</h2>
 <p>We store your data while your account exists. You can delete your account and all related data at any
